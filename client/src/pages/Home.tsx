@@ -65,6 +65,19 @@ const steps = [
   ["03", "História", "O conteúdo ganha forma com direção criativa, cuidado e entrega organizada."],
 ];
 
+const verifiedPartners = [
+  {
+    name: "Haskell",
+    category: "beleza & cuidado capilar",
+    href: "https://www.instagram.com/reel/Db6By58wOs4/",
+  },
+  {
+    name: "Jurema Águas Quentes",
+    category: "turismo & bem-estar",
+    href: "https://www.instagram.com/franmendesgeffer/reel/DcKC4rFT1jg/",
+  },
+];
+
 function BrandMark() {
   return (
     <span className="brand-mark" aria-hidden="true">
@@ -229,6 +242,36 @@ export default function Home() {
                 <a href={REEL_URL} target="_blank" rel="noreferrer" className="reel-action"><Play size={16} fill="currentColor" /> Assistir no Instagram</a>
               </div>
               <img src={ASSETS.motion} alt="" />
+            </div>
+          </div>
+        </section>
+
+        <section className="brands-section section-shell" aria-labelledby="brands-title">
+          <div className="brands-heading reveal-up">
+            <p className="eyebrow"><span /> PARCERIAS QUE JÁ VIRARAM CENA</p>
+            <h2 id="brands-title">Marcas que já<br /><em>entraram na rotina.</em></h2>
+            <p>Trabalhos recentes em que a presença da Fran ajudou a transformar produto, destino e experiência em conteúdo com contexto real.</p>
+          </div>
+          <div className="brands-list reveal-up delay-1" aria-label="Marcas parceiras verificadas">
+            {verifiedPartners.map((partner, index) => (
+              <a
+                className="partner-row"
+                href={partner.href}
+                target="_blank"
+                rel="noreferrer"
+                key={partner.name}
+                aria-label={`Ver publicação da parceria com ${partner.name}`}
+              >
+                <span className="partner-index">0{index + 1}</span>
+                <strong>{partner.name}</strong>
+                <span className="partner-category">{partner.category}</span>
+                <ArrowUpRight size={20} aria-hidden="true" />
+              </a>
+            ))}
+            <div className="partner-invite">
+              <span>PRÓXIMA CENA</span>
+              <p>A sua marca pode ser a próxima a entrar nessa história.</p>
+              <a href="#contato">Converse com a assessoria <ArrowDownRight size={16} /></a>
             </div>
           </div>
         </section>

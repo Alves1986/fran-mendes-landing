@@ -152,6 +152,24 @@ h1 em, h2 em { color: var(--coral); font-weight: 400; }
 .reel-action { display: inline-flex; align-items: center; gap: 8px; background: var(--ink); color: var(--paper); padding: 10px 14px; border-radius: 999px; font-size: 10px; font-weight: 800; transition: background .18s ease; }
 .reel-action:hover { background: var(--coral); }
 
+.brands-section { background: var(--paper); padding-top: 135px; padding-bottom: 125px; display: grid; grid-template-columns: .88fr 1.12fr; gap: 8vw; align-items: start; position: relative; }
+.brands-section:before { content: "PRESENÇA QUE GANHA CONTEXTO"; position: absolute; right: 4.1vw; top: 32px; color: rgba(216,111,98,.76); font-size: 8px; font-weight: 800; letter-spacing: .16em; writing-mode: vertical-rl; transform: rotate(180deg); }
+.brands-heading { max-width: 430px; }
+.brands-heading h2 { margin: 25px 0 22px; font-size: clamp(3.15rem, 4.8vw, 5.35rem); line-height: .9; }
+.brands-heading > p:not(.eyebrow) { margin: 0; color: rgba(41,39,37,.67); font-size: 14px; line-height: 1.82; max-width: 365px; }
+.brands-list { border-top: 1px solid var(--line); }
+.partner-row { min-height: 126px; display: grid; grid-template-columns: 44px minmax(0, 1fr) auto 34px; align-items: center; column-gap: 18px; border-bottom: 1px solid var(--line); transition: padding .22s cubic-bezier(.23,1,.32,1), background .22s ease; }
+.partner-row:hover { padding-left: 18px; padding-right: 18px; background: rgba(216,111,98,.08); }
+.partner-index { color: var(--coral); font-size: 10px; font-weight: 800; letter-spacing: .12em; }
+.partner-row strong { color: var(--ink); font-family: "DM Serif Display", serif; font-size: clamp(2rem, 3.15vw, 3.3rem); font-weight: 400; letter-spacing: -.055em; line-height: .95; }
+.partner-category { color: rgba(41,39,37,.56); font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; text-align: right; }
+.partner-row svg { color: var(--coral); transition: transform .2s cubic-bezier(.23,1,.32,1); }
+.partner-row:hover svg { transform: translate(3px, -3px); }
+.partner-invite { margin-top: 28px; padding: 23px 24px 21px; border-left: 2px solid var(--coral); background: var(--cream); }
+.partner-invite > span { color: var(--coral); font-size: 9px; font-weight: 800; letter-spacing: .15em; }
+.partner-invite p { max-width: 375px; margin: 10px 0 13px; color: var(--coffee); font-family: "DM Serif Display", serif; font-size: 23px; letter-spacing: -.035em; line-height: 1.02; }
+.partner-invite a { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); border-bottom: 1px solid var(--ink); padding-bottom: 4px; font-size: 10px; font-weight: 800; }
+
 .offerings-section { padding-top: 160px; padding-bottom: 140px; }
 .offerings-top { display: grid; grid-template-columns: 1.16fr .84fr; gap: 55px; align-items: end; }
 .offerings-top > p { max-width: 375px; margin: 0 0 6px auto; color: rgba(41,39,37,.69); font-size: 14px; line-height: 1.8; }
@@ -249,6 +267,8 @@ h1 em, h2 em { color: var(--coral); font-weight: 400; }
   .story-header > p { justify-self: start; }
   .story-grid { grid-template-columns: 1fr 1fr; gap: 18px; padding-top: 45px; }
   .reel-card { grid-column: 1 / -1; min-height: 240px; }
+  .brands-section { grid-template-columns: 1fr; gap: 50px; padding-top: 105px; padding-bottom: 100px; }
+  .brands-section:before { display: none; }
   .offerings-section { padding-top: 110px; padding-bottom: 95px; }
   .offerings-top { grid-template-columns: 1fr; gap: 25px; }
   .offerings-top > p { margin-left: 0; }
@@ -292,6 +312,13 @@ h1 em, h2 em { color: var(--coral); font-weight: 400; }
   .story-card, .fitness-card { height: 340px; border-radius: 12px 12px 65px 12px; }
   .fitness-card { border-radius: 82px 82px 12px 12px; }
   .reel-card { min-height: 220px; }
+  .brands-section { gap: 38px; padding-top: 88px; padding-bottom: 85px; }
+  .brands-heading h2 { font-size: clamp(3.15rem, 13.5vw, 4.4rem); }
+  .partner-row { min-height: 110px; grid-template-columns: 26px minmax(0, 1fr) 26px; gap: 12px; }
+  .partner-category { grid-column: 2; grid-row: 2; text-align: left; margin-top: -29px; padding-bottom: 17px; font-size: 8px; }
+  .partner-row svg { grid-column: 3; grid-row: 1 / span 2; }
+  .partner-row strong { font-size: 31px; align-self: end; padding-bottom: 8px; }
+  .partner-invite { margin-top: 21px; }
   .offering-row { grid-template-columns: 22px 1fr 34px; }
   .offering-row h3 { font-size: 27px; }
   .process-art { height: 230px; }
