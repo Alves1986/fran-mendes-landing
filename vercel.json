@@ -1,8 +1,4 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "vite",
-  "buildCommand": "pnpm build",
-  "outputDirectory": "dist/public",
-  "cleanUrls": true
+  "framework": "nextjs"
 }
-

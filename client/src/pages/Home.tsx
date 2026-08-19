@@ -1,9 +1,11 @@
+"use client";
+
 /**
  * Design reminder — Editorial de casa aberta:
  * calor humano, narrativa visual assimétrica e conversão profissional.
  * A Fran é a protagonista; elementos gráficos apenas organizam sua história.
  */
-import { FormEvent, useState } from "react";
+import { useState } from "react";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -19,6 +21,16 @@ const AGENCY_URL = "https://wa.link/f8gtsj";
 const PERSONAL_INSTAGRAM = "https://www.instagram.com/franmendesgeffer/";
 const FITNESS_INSTAGRAM = "https://www.instagram.com/franmendes.fit/";
 const REEL_URL = "https://www.instagram.com/reel/DZk2XmYJT-D/";
+const ASSETS = {
+  brandMark: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028544755/hkWkUUFVTpXlDWfF.png",
+  caseTexture: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028544755/EFhGWqvfhDzWpryH.png",
+  heroTexture: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028544755/iKqhoQrwcIhzJPsy.png",
+  fitness: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028544755/qlYjLnVTmStuPYSU.png",
+  lifestyle: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028544755/DVqDtKfKrgeBhOMY.png",
+  motion: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028544755/HNGAJxfOexisoRYu.png",
+  routine: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028544755/gOKFVjJHsGnzcZYT.png",
+  portrait: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028544755/anRMVCviHEogSAQp.jpg",
+} as const;
 
 const offerings = [
   {
@@ -57,7 +69,7 @@ function BrandMark() {
   return (
     <span className="brand-mark" aria-hidden="true">
       <img
-        src="/manus-storage/fran-brand-mark_e2209d1a.png"
+        src={ASSETS.brandMark}
         alt=""
       />
     </span>
@@ -66,19 +78,6 @@ function BrandMark() {
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
-  const [submitted, setSubmitted] = useState(false);
-
-  const handleBriefing = (event: FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    const name = String(data.get("name") || "").trim();
-    const company = String(data.get("company") || "").trim();
-    const category = String(data.get("category") || "").trim();
-    const objective = String(data.get("objective") || "").trim();
-    const message = `Olá, sou ${name || "[nome]"}${company ? `, da ${company}` : ""}. Gostaria de solicitar uma proposta de campanha com a Fran Mendes Geffer.${category ? ` Categoria: ${category}.` : ""}${objective ? ` Objetivo: ${objective}.` : ""}`;
-    setSubmitted(true);
-    window.open(`${AGENCY_URL}?text=${encodeURIComponent(message)}`, "_blank", "noopener,noreferrer");
-  };
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -128,7 +127,7 @@ export default function Home() {
         </svg>
         <section className="hero" id="inicio">
           <div className="hero-texture" aria-hidden="true">
-            <img src="/manus-storage/fran-hero-texture_2c4d4717.png" alt="" />
+            <img src={ASSETS.heroTexture} alt="" />
           </div>
           <div className="hero-copy reveal-up">
             <p className="eyebrow"><span /> MARCA PESSOAL · PARCERIAS</p>
@@ -153,7 +152,7 @@ export default function Home() {
             <div className="hero-portrait-frame">
               <img
                 className="hero-portrait"
-                src="/manus-storage/fran-youtube-portrait_90bde09b.jpg"
+                src={ASSETS.portrait}
                 alt="Fran Mendes Geffer sorrindo"
               />
             </div>
@@ -194,7 +193,7 @@ export default function Home() {
             </a>
           </div>
           <div className="about-art" aria-hidden="true">
-            <img src="/manus-storage/fran-routine-still-life_43ae0dd1.png" alt="" />
+            <img src={ASSETS.routine} alt="" />
           </div>
         </section>
 
@@ -210,14 +209,14 @@ export default function Home() {
           </div>
           <div className="story-grid section-shell">
             <a className="story-card lifestyle-card" href={PERSONAL_INSTAGRAM} target="_blank" rel="noreferrer">
-              <img src="/manus-storage/fran-instagram-lifestyle_e1cb5c71.jpg" alt="Imagem do Instagram pessoal de Fran Mendes Geffer" />
+              <img src={ASSETS.lifestyle} alt="Imagem do Instagram pessoal de Fran Mendes Geffer" />
               <span className="story-gradient" />
               <span className="card-meta">@FRANMENDESGEFFER</span>
               <strong>Vida real<br /><em>que inspira.</em></strong>
               <span className="card-arrow"><ArrowUpRight size={19} /></span>
             </a>
             <a className="story-card fitness-card" href={FITNESS_INSTAGRAM} target="_blank" rel="noreferrer">
-              <img src="/manus-storage/fran-instagram-fitness_19e06071.jpg" alt="Imagem do Instagram fitness de Fran Mendes Geffer" />
+              <img src={ASSETS.fitness} alt="Imagem do Instagram fitness de Fran Mendes Geffer" />
               <span className="story-gradient" />
               <span className="card-meta">@FRANMENDES.FIT</span>
               <strong>Persistência<br /><em>também é performance.</em></strong>
@@ -229,7 +228,7 @@ export default function Home() {
                 <p>O melhor da rotina acontece em movimento.</p>
                 <a href={REEL_URL} target="_blank" rel="noreferrer" className="reel-action"><Play size={16} fill="currentColor" /> Assistir no Instagram</a>
               </div>
-              <img src="/manus-storage/fran-motion-abstract_659ec873.png" alt="" />
+              <img src={ASSETS.motion} alt="" />
             </div>
           </div>
         </section>
@@ -256,7 +255,7 @@ export default function Home() {
 
         <section className="process-section">
           <div className="process-art" aria-hidden="true">
-            <img src="/manus-storage/fran-case-texture_d8a48aa7.png" alt="" />
+            <img src={ASSETS.caseTexture} alt="" />
           </div>
           <div className="process-content">
             <p className="eyebrow"><span /> COMO ACONTECE</p>
@@ -287,27 +286,18 @@ export default function Home() {
 
         <section className="contact-section" id="contato">
           <div className="contact-visual" aria-hidden="true">
-            <img src="/manus-storage/fran-youtube-portrait_90bde09b.jpg" alt="" />
+            <img src={ASSETS.portrait} alt="" />
             <span className="contact-sun">✳</span>
           </div>
           <div className="contact-copy">
             <p className="eyebrow eyebrow-light"><span /> VAMOS CONVERSAR</p>
             <h2>Tem uma ideia na<br />cabeça? Vamos<br /><em>colocar em cena.</em></h2>
-            <p>Conta para a gente o que sua marca quer viver. A assessoria da Fran retorna para desenhar o formato que combina com a sua campanha.</p>
+            <p>Conte para a assessoria o que sua marca quer viver. A conversa começa por WhatsApp e o formato é desenhado a partir do objetivo da campanha.</p>
             <p className="contact-note">Pode ter começado numa conversa de café. As boas histórias, quase sempre, começam assim.</p>
-            <form onSubmit={handleBriefing} className="briefing-form">
-              <div className="form-row">
-                <label>Seu nome<input name="name" placeholder="Como podemos te chamar?" required /></label>
-                <label>Marca ou agência<input name="company" placeholder="Nome da empresa" required /></label>
-              </div>
-              <div className="form-row">
-                <label>Categoria<select name="category" defaultValue=""><option value="" disabled>Selecione uma categoria</option><option>Beleza & autocuidado</option><option>Fitness & bem-estar</option><option>Casa & família</option><option>Moda & estilo</option><option>Alimentação</option><option>Outra</option></select></label>
-                <label>Objetivo<select name="objective" defaultValue=""><option value="" disabled>O que sua marca busca?</option><option>Alcance & reconhecimento</option><option>Conteúdo UGC</option><option>Conversão & vendas</option><option>Evento & ativação</option><option>Embaixadora de marca</option></select></label>
-              </div>
-              <button className="button button-light" type="submit">Abrir conversa com a assessoria <Send size={18} /></button>
-              {submitted && <p className="form-success">Seu briefing foi preparado. Se o WhatsApp não abrir, use o botão abaixo.</p>}
-            </form>
-            <a className="direct-contact" href={AGENCY_URL} target="_blank" rel="noreferrer">Prefere chamar agora? Fale com a assessoria <ArrowUpRight size={17} /></a>
+            <div className="contact-actions">
+              <a className="button button-light" href={AGENCY_URL} target="_blank" rel="noreferrer">Abrir conversa com a assessoria <Send size={18} /></a>
+              <a className="direct-contact" href={AGENCY_URL} target="_blank" rel="noreferrer">Prefere chamar agora? Fale com a assessoria <ArrowUpRight size={17} /></a>
+            </div>
           </div>
         </section>
       </main>

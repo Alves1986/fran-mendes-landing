@@ -186,16 +186,17 @@ h1 em, h2 em { color: var(--coral); font-weight: 400; }
 .fit-note { grid-column: 1 / -1; margin: 0; padding-top: 20px; display: flex; align-items: center; gap: 8px; color: rgba(41,39,37,.71); font-size: 12px; font-weight: 700; }
 .fit-note svg { color: var(--coral); }
 
-.contact-section { background: var(--ink); color: var(--paper); min-height: 760px; display: grid; grid-template-columns: .85fr 1.15fr; }
+.contact-section { background: var(--ink); color: var(--paper); height: min(680px, 100svh); min-height: 590px; display: grid; grid-template-columns: .85fr 1.15fr; }
 .contact-visual { overflow: hidden; position: relative; background: var(--coffee); }
 .contact-visual:after { content: ""; position: absolute; inset: 0; background: linear-gradient(20deg, rgba(39,34,31,.57), transparent 65%); }
 .contact-visual > img { width: 100%; height: 100%; object-fit: cover; object-position: center; filter: grayscale(.13) contrast(.96) saturate(.83); }
 .contact-sun { position: absolute; z-index: 1; right: 35px; top: 28px; color: var(--coral); font-size: 86px; line-height: 1; }
-.contact-copy { max-width: 745px; padding: 112px 9vw 95px 10%; }
-.contact-copy h2 { margin: 25px 0 20px; font-size: clamp(3.5rem, 5.7vw, 6.2rem); line-height: .88; }
+.contact-copy { max-width: 680px; padding: clamp(56px, 7vw, 88px) 9vw clamp(46px, 6vw, 70px) 10%; align-self: center; }
+.contact-copy h2 { margin: 21px 0 16px; font-size: clamp(3.15rem, 4.9vw, 5.5rem); line-height: .88; }
 .contact-copy h2 em { color: #f4afa5; }
 .contact-copy > p:not(.eyebrow) { max-width: 460px; color: rgba(255,253,249,.65); font-size: 13px; line-height: 1.75; }
 .contact-copy .contact-note { margin: 18px 0 0; max-width: 420px; padding-left: 15px; border-left: 2px solid var(--coral); color: rgba(255,253,249,.9); font-family: "DM Serif Display", serif; font-size: 17px; font-style: italic; line-height: 1.25; }
+.contact-actions { margin-top: 28px; display: flex; align-items: flex-start; flex-direction: column; gap: 20px; }
 .briefing-form { margin-top: 38px; }
 .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 15px; }
 .briefing-form label { display: grid; gap: 8px; color: rgba(255,253,249,.6); font-size: 9px; font-weight: 800; letter-spacing: .11em; text-transform: uppercase; }
@@ -206,7 +207,7 @@ h1 em, h2 em { color: var(--coral); font-weight: 400; }
 .button-light { margin-top: 9px; color: var(--ink); background: var(--paper); }
 .button-light:hover { color: var(--paper); background: var(--coral); transform: translateY(-2px); }
 .form-success { color: #bed8b8; margin: 14px 0 0; font-size: 11px; line-height: 1.5; }
-.direct-contact { display: inline-flex; align-items: center; gap: 8px; margin-top: 26px; color: rgba(255,253,249,.78); border-bottom: 1px solid rgba(255,253,249,.45); padding-bottom: 5px; font-size: 11px; font-weight: 800; }
+.direct-contact { display: inline-flex; align-items: center; gap: 8px; color: rgba(255,253,249,.78); border-bottom: 1px solid rgba(255,253,249,.45); padding-bottom: 5px; font-size: 11px; font-weight: 800; }
 
 .footer { min-height: 155px; padding: 35px 4.3vw; display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 25px; align-items: center; background: var(--cream); }
 .footer p { margin: 0; justify-self: center; color: rgba(41,39,37,.58); font-family: "DM Serif Display", serif; font-size: 18px; font-style: italic; letter-spacing: -.02em; }
@@ -259,9 +260,9 @@ h1 em, h2 em { color: var(--coral); font-weight: 400; }
   .process-content { padding: 85px 9vw; }
   .fit-section { padding-top: 110px; padding-bottom: 110px; grid-template-columns: 1fr; gap: 35px; }
   .fit-tags { padding-top: 0; }
-  .contact-section { grid-template-columns: 1fr; }
+  .contact-section { height: auto; min-height: 0; grid-template-columns: 1fr; }
   .contact-visual { height: 360px; }
-  .contact-copy { padding: 85px 8vw; }
+  .contact-copy { padding: 68px 8vw 72px; }
   .footer { grid-template-columns: 1fr; padding: 42px 7vw; }
   .footer p { justify-self: start; }
   .footer-links { justify-content: flex-start; }
@@ -297,7 +298,7 @@ h1 em, h2 em { color: var(--coral); font-weight: 400; }
   .process-content { padding: 74px 8vw; }
   .fit-tags span { font-size: 19px; }
   .contact-visual { height: 285px; }
-  .contact-copy { padding: 72px 7vw; }
+  .contact-copy { padding: 58px 7vw 62px; }
   .contact-copy h2 { font-size: clamp(3.45rem, 15vw, 5.4rem); }
   .form-row { grid-template-columns: 1fr; gap: 15px; }
   .footer-links { display: grid; gap: 12px; }
