@@ -67,6 +67,16 @@ const steps = [
 
 const verifiedPartners = [
   {
+    name: "Volkswagen",
+    category: "automotivo · T-Cross Highline",
+    href: "https://www.instagram.com/reel/DcHiePxT5El/",
+  },
+  {
+    name: "Lojas G",
+    category: "casa & decoração",
+    href: "https://www.tiktok.com/@lojasgbrasil/video/7660162515401198864",
+  },
+  {
     name: "Haskell",
     category: "beleza & cuidado capilar",
     href: "https://www.instagram.com/reel/Db6By58wOs4/",
