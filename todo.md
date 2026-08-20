@@ -155,3 +155,9 @@ A versão recuperada corresponde ao commit `1e528ce` do repositório original. A
 - [x] Conferir o remoto configurado e o estado local da versão validada.
 - [x] Enviar o checkpoint atual ao repositório GitHub informado.
 - [x] Confirmar o commit remoto e atualizar o registro de publicação.
+
+## Correção da publicação Vercel
+
+- [ ] Diagnosticar por que o domínio está exibindo `server/index.ts` em vez do build da landing.
+- [ ] Ajustar a configuração de build e rota estática para a Vercel.
+- [ ] Validar a resposta do domínio e enviar a correção ao GitHub.
