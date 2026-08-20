@@ -19,6 +19,8 @@ import {
   X,
 } from "lucide-react";
 import { BRAND_SYMBOL, BrandLockup } from "@/components/BrandLockup";
+import { CookieConsent } from "@/components/CookieConsent";
+import { hasAnalyticsConsent } from "@/lib/cookieConsent";
 import { SITE_CONTACT_URL, whatsappUrl } from "@/lib/contact";
 import "@/hero-stability.css";
 
@@ -33,6 +35,30 @@ const navigationItems = [
   { href: "#historia", label: "Conteúdo" },
   { href: "#contato", label: "Contato" },
 ] as const;
+
+type BriefValues = {
+  brand: string;
+  objective: string;
+  format: string;
+  context: string;
+  privacyConsent: boolean;
+};
+
+const initialBriefValues: BriefValues = {
+  brand: "",
+  objective: "",
+  format: "",
+  context: "",
+  privacyConsent: false,
+};
+
+const initialBriefTouched = {
+  brand: false,
+  objective: false,
+  format: false,
+  privacyConsent: false,
+};
+
 const ASSETS = {
   caseTexture: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028544755/EFhGWqvfhDzWpryH.png",
   heroTexture: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028544755/iKqhoQrwcIhzJPsy.png",
@@ -120,6 +146,16 @@ export default function Home() {
   const [introComplete, setIntroComplete] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
   const [briefStatus, setBriefStatus] = useState<"idle" | "sent">("idle");
+  const [briefValues, setBriefValues] = useState<BriefValues>(initialBriefValues);
+  const [briefTouched, setBriefTouched] = useState(initialBriefTouched);
+
+  const briefErrors = {
+    brand: briefValues.brand.trim().length >= 2 ? "" : "Informe o nome da marca para continuar.",
+    objective: briefValues.objective ? "" : "Selecione o objetivo da parceria.",
+    format: briefValues.format ? "" : "Selecione o formato de interesse.",
+    privacyConsent: briefValues.privacyConsent ? "" : "É necessário aceitar a Política de Privacidade.",
+  };
+  const isBriefValid = Object.values(briefErrors).every((error) => !error);
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -147,6 +183,7 @@ export default function Home() {
   }, []);
 
   const trackEngagement = (eventName: string, detail: Record<string, string> = {}) => {
+    if (!hasAnalyticsConsent()) return;
     const payload = {
       event: eventName,
       websiteId: import.meta.env.VITE_ANALYTICS_WEBSITE_ID,
@@ -165,6 +202,15 @@ export default function Home() {
       return;
     }
     void fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body, keepalive: true }).catch(() => undefined);
+  };
+
+  const updateBriefValue = <K extends keyof BriefValues>(field: K, value: BriefValues[K]) => {
+    setBriefValues((current) => ({ ...current, [field]: value }));
+    setBriefStatus("idle");
+  };
+
+  const touchBriefField = (field: keyof typeof initialBriefTouched) => {
+    setBriefTouched((current) => ({ ...current, [field]: true }));
   };
 
   const handleInPageNavigation = (event: MouseEvent<HTMLElement>) => {
@@ -188,24 +234,24 @@ export default function Home() {
 
   const handleBriefSubmit = (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const brand = String(formData.get("brand") ?? "").trim();
-    const objective = String(formData.get("objective") ?? "");
-    const format = String(formData.get("format") ?? "");
-    const context = String(formData.get("context") ?? "").trim();
+    setBriefTouched({ brand: true, objective: true, format: true, privacyConsent: true });
+    if (!isBriefValid) return;
+
+    const { brand, objective, format, context } = briefValues;
     const summary = [
       "Olá! Cheguei pelo site da Fran Mendes Geffer e gostaria de conversar sobre uma parceria.",
-      `Marca: ${brand}`,
+      `Marca: ${brand.trim()}`,
       `Objetivo: ${objective}`,
       `Formato de interesse: ${format}`,
-      context ? `Contexto: ${context}` : "",
+      context.trim() ? `Contexto: ${context.trim()}` : "",
     ].filter(Boolean).join("\n");
 
     trackEngagement("briefing_submit", { objective, format });
     window.open(whatsappUrl(summary), "_blank", "noopener,noreferrer");
     void navigator.clipboard?.writeText(summary).catch(() => undefined);
     setBriefStatus("sent");
-    event.currentTarget.reset();
+    setBriefValues(initialBriefValues);
+    setBriefTouched(initialBriefTouched);
   };
 
   return (
@@ -328,11 +374,11 @@ export default function Home() {
             <p className="contact-response-time"><Check size={15} aria-hidden="true" /> Prazo estimado de resposta da assessoria: <strong>até 2 dias úteis.</strong></p>
             <form className="brief-form" onSubmit={handleBriefSubmit}>
               <div className="brief-heading"><span>BRIEFING RÁPIDO</span><p>Deixe o contexto pronto para a conversa.</p></div>
-              <label>Marca<input name="brand" required placeholder="Nome da marca" autoComplete="organization" /></label>
-              <div className="brief-selects"><label>Objetivo<select name="objective" required defaultValue=""><option value="" disabled>Selecione</option><option value="Lançamento de produto">Lançamento de produto</option><option value="Fortalecer presença de marca">Fortalecer presença de marca</option><option value="Campanha sazonal">Campanha sazonal</option><option value="Outro objetivo">Outro objetivo</option></select></label><label>Formato<select name="format" required defaultValue=""><option value="" disabled>Selecione</option><option value="Campanha de influência">Campanha de influência</option><option value="Conteúdo UGC">Conteúdo UGC</option><option value="Embaixadora de marca">Embaixadora de marca</option><option value="Evento ou ativação">Evento ou ativação</option></select></label></div>
-              <label>Contexto (opcional)<textarea name="context" rows={2} placeholder="Produto, período ou ideia inicial" /></label>
-              <label className="brief-consent"><input name="privacy-consent" type="checkbox" required /> <span>Li e concordo com a <a href="/privacidade" target="_blank" rel="noreferrer">Política de Privacidade</a> para o atendimento deste briefing.</span></label>
-              <button className="brief-submit" type="submit">Continuar pelo WhatsApp <Send size={16} /></button>
+              <label>Marca<input name="brand" value={briefValues.brand} onChange={(event) => updateBriefValue("brand", event.currentTarget.value)} onBlur={() => touchBriefField("brand")} required aria-invalid={briefTouched.brand && Boolean(briefErrors.brand)} aria-describedby={briefTouched.brand && briefErrors.brand ? "brief-brand-error" : undefined} placeholder="Nome da marca" autoComplete="organization" />{briefTouched.brand && briefErrors.brand && <span className="field-error" id="brief-brand-error" role="alert">{briefErrors.brand}</span>}</label>
+              <div className="brief-selects"><label>Objetivo<select name="objective" value={briefValues.objective} onChange={(event) => { updateBriefValue("objective", event.currentTarget.value); touchBriefField("objective"); }} onBlur={() => touchBriefField("objective")} required aria-invalid={briefTouched.objective && Boolean(briefErrors.objective)} aria-describedby={briefTouched.objective && briefErrors.objective ? "brief-objective-error" : undefined}><option value="" disabled>Selecione</option><option value="Lançamento de produto">Lançamento de produto</option><option value="Fortalecer presença de marca">Fortalecer presença de marca</option><option value="Campanha sazonal">Campanha sazonal</option><option value="Outro objetivo">Outro objetivo</option></select>{briefTouched.objective && briefErrors.objective && <span className="field-error" id="brief-objective-error" role="alert">{briefErrors.objective}</span>}</label><label>Formato<select name="format" value={briefValues.format} onChange={(event) => { updateBriefValue("format", event.currentTarget.value); touchBriefField("format"); }} onBlur={() => touchBriefField("format")} required aria-invalid={briefTouched.format && Boolean(briefErrors.format)} aria-describedby={briefTouched.format && briefErrors.format ? "brief-format-error" : undefined}><option value="" disabled>Selecione</option><option value="Campanha de influência">Campanha de influência</option><option value="Conteúdo UGC">Conteúdo UGC</option><option value="Embaixadora de marca">Embaixadora de marca</option><option value="Evento ou ativação">Evento ou ativação</option></select>{briefTouched.format && briefErrors.format && <span className="field-error" id="brief-format-error" role="alert">{briefErrors.format}</span>}</label></div>
+              <label>Contexto (opcional)<textarea name="context" value={briefValues.context} onChange={(event) => updateBriefValue("context", event.currentTarget.value)} rows={2} placeholder="Produto, período ou ideia inicial" /></label>
+              <label className={`brief-consent ${briefTouched.privacyConsent && briefErrors.privacyConsent ? "has-error" : ""}`}><input name="privacy-consent" type="checkbox" checked={briefValues.privacyConsent} onChange={(event) => { updateBriefValue("privacyConsent", event.currentTarget.checked); touchBriefField("privacyConsent"); }} required aria-invalid={briefTouched.privacyConsent && Boolean(briefErrors.privacyConsent)} aria-describedby={briefTouched.privacyConsent && briefErrors.privacyConsent ? "brief-privacy-error" : undefined} /> <span>Li e concordo com a <a href="/privacidade" target="_blank" rel="noreferrer">Política de Privacidade</a> para o atendimento deste briefing.</span>{briefTouched.privacyConsent && briefErrors.privacyConsent && <small className="field-error" id="brief-privacy-error" role="alert">{briefErrors.privacyConsent}</small>}</label>
+              <button className="brief-submit" type="submit" disabled={!isBriefValid}>Continuar pelo WhatsApp <Send size={16} /></button>
               {briefStatus === "sent" && <div className="brief-feedback" role="status"><div className="brief-feedback-symbol" aria-hidden="true"><img src={BRAND_SYMBOL} alt="" /></div><div><strong>Seu briefing está a caminho.</strong><span>A mensagem foi aberta no WhatsApp e o resumo também foi copiado. A assessoria costuma responder em até 2 dias úteis.</span></div></div>}
             </form>
           </div>
@@ -345,6 +391,7 @@ export default function Home() {
           <span>WhatsApp</span>
         </a>
       </div>
+      <CookieConsent />
     </>
   );
 }

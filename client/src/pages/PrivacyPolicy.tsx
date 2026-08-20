@@ -34,7 +34,7 @@ export default function PrivacyPolicy() {
           <div className="privacy-list">
             <article><strong>Dados informados</strong><p>Nome da marca, objetivo, formato de interesse e contexto da campanha. O formulário prepara uma mensagem no seu navegador para continuar a conversa pelo WhatsApp.</p></article>
             <article><strong>Uso da informação</strong><p>O conteúdo serve somente para entender a oportunidade comercial, responder ao contato e estruturar uma possível proposta de parceria.</p></article>
-            <article><strong>Compartilhamento e medição</strong><p>As informações não são vendidas. A landing mede eventos de navegação e conversão sem incluir o nome da marca ou o contexto escrito no briefing.</p></article>
+            <article><strong>Cookies e medição</strong><p>As informações não são vendidas. Com seu aceite, a landing mede eventos de navegação e conversão sem incluir o nome da marca ou o contexto escrito no briefing. A sua escolha fica registrada somente no armazenamento local do navegador.</p></article>
           </div>
           <p className="privacy-note">Ao optar por continuar no WhatsApp, você concorda com o uso dessas informações para o atendimento comercial da assessoria.</p>
           <a className="privacy-contact" href="/">Voltar para a página da Fran <ArrowUpRight size={16} /></a>
