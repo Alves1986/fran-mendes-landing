@@ -74,8 +74,14 @@ A versão recuperada corresponde ao commit `1e528ce` do repositório original. A
 
 ## Nova revisão — consistência visual e cortes
 
-- [ ] Substituir a logo do site pela assinatura aprovada no manual de marca.
-- [ ] Corrigir os enquadramentos e as faixas de texto das fotos para impedir cortes de rosto e conteúdo.
-- [ ] Ajustar a foto “Rotina real” do manual para preservar a legenda integral.
-- [ ] Corrigir paginação e rodapé para eliminar espaço residual e numeração duplicada no PDF.
-- [ ] Validar as correções no site, no PDF e em telas menores antes da entrega.
+- [x] Substituir a logo do site pela assinatura aprovada no manual de marca.
+- [x] Corrigir os enquadramentos e as faixas de texto das fotos para impedir cortes de rosto e conteúdo.
+- [x] Ajustar a foto “Rotina real” do manual para preservar a legenda integral.
+- [x] Corrigir paginação e rodapé para eliminar espaço residual e numeração duplicada no PDF.
+- [x] Validar as correções no site, no PDF e em telas menores antes da entrega.
+
+## Correção solicitada — logo idêntica ao Manual de Marca
+
+- [x] Confirmar o arquivo exato de logo exibido no Manual de Marca.
+- [x] Aplicar a mesma assinatura visual no cabeçalho e rodapé da landing.
+- [x] Validar visualmente a troca em desktop e mobile; o checkpoint será salvo a seguir.
