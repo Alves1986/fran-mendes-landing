@@ -86,6 +86,26 @@ const verifiedPartners = [
     category: "turismo & bem-estar",
     href: "https://www.instagram.com/franmendesgeffer/reel/DcKC4rFT1jg/",
   },
+  {
+    name: "99",
+    category: "mobilidade & serviços urbanos",
+    href: "https://www.instagram.com/reel/DZOExwfTd6L/",
+  },
+  {
+    name: "GED Nutrition",
+    category: "nutrição & performance",
+    href: "https://www.instagram.com/reel/DMYmaOiyeiE/",
+  },
+  {
+    name: "Teixeira Sorvetes",
+    category: "alimentos & varejo",
+    href: "https://www.instagram.com/reel/DJ-OE1cyonG/",
+  },
+  {
+    name: "Natura",
+    category: "beleza & perfumaria",
+    href: "https://www.instagram.com/reel/DI9aEZkOxm-/",
+  },
 ];
 
 function BrandMark() {

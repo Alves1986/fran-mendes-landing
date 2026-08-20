@@ -8,3 +8,16 @@
 ## Resultado da recuperação
 
 A versão recuperada corresponde ao commit `1e528ce` do repositório original. A landing preserva o editorial “Casa aberta”, as imagens restauradas, o CTA direto para a assessoria e a seção de parcerias com Volkswagen, Lojas G, Haskell e Jurema Águas Quentes, cada uma ligada à evidência pública correspondente.
+
+## Nova atualização — parcerias adicionais
+
+- [x] Verificar a marca e a categoria presentes em cada um dos quatro Reels encaminhados.
+- [x] Inserir as quatro novas parcerias na seção editorial de marcas, com seus links de comprovação.
+- [x] Conferir a composição responsiva da lista ampliada e salvar uma nova versão validada.
+
+### Verificações em andamento
+
+- `DZOExwfTd6L`: **99** — mobilidade e entregas urbanas.
+- `DMYmaOiyeiE`: **GED Nutrition** — nutrição e acompanhamento nutricional.
+- `DJ-OE1cyonG`: **Teixeira Sorvetes** — alimentos, varejo e ativação local.
+- `DI9aEZkOxm-`: **Natura** — beleza, perfumaria e autocuidado.
