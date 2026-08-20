@@ -17,6 +17,7 @@ import {
   Send,
   X,
 } from "lucide-react";
+import { BrandLockup } from "@/components/BrandLockup";
 
 const AGENCY_URL = "https://wa.link/f8gtsj";
 const MEDIA_KIT_URL = "/manus-storage/fran-mendes-geffer-media-kit_8acce6f4.pdf";
@@ -24,7 +25,6 @@ const PERSONAL_INSTAGRAM = "https://www.instagram.com/franmendesgeffer/";
 const FITNESS_INSTAGRAM = "https://www.instagram.com/franmendes.fit/";
 const REEL_URL = "https://www.instagram.com/reel/DZk2XmYJT-D/";
 const ASSETS = {
-  brandSymbol: "/manus-storage/fran-mendes-geffer-manual-symbol_f5cf3c42.png",
   caseTexture: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028544755/EFhGWqvfhDzWpryH.png",
   heroTexture: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028544755/iKqhoQrwcIhzJPsy.png",
   fitness: "/manus-storage/fran-fitness-current-v2_c08fbc8e.png",
@@ -106,18 +106,6 @@ const verifiedPartners = [
   },
 ];
 
-function BrandLockup() {
-  return (
-    <span className="brand-lockup" aria-hidden="true">
-      <img className="brand-symbol-image" src={ASSETS.brandSymbol} alt="" />
-      <span className="brand-lockup-copy">
-        <strong>Fran</strong>
-        <small>MENDES GEFFER</small>
-      </span>
-    </span>
-  );
-}
-
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -132,6 +120,7 @@ export default function Home() {
 
         <nav className="desktop-nav" aria-label="Navegação principal">
           <a href="#sobre">Sobre</a>
+          <a href="#biografia">Biografia</a>
           <a href="#parcerias">Parcerias</a>
           <a href="#historia">Conteúdo</a>
           <a href="#contato">Contato</a>
@@ -154,6 +143,7 @@ export default function Home() {
 
       <div className={`mobile-menu ${menuOpen ? "is-open" : ""}`}>
         <a href="#sobre" onClick={closeMenu}>Sobre</a>
+        <a href="#biografia" onClick={closeMenu}>Biografia</a>
         <a href="#parcerias" onClick={closeMenu}>Parcerias</a>
         <a href="#historia" onClick={closeMenu}>Conteúdo</a>
         <a href="#contato" onClick={closeMenu}>Contato</a>
@@ -192,6 +182,11 @@ export default function Home() {
           <div className="about-heading reveal-up"><p className="eyebrow"><span /> QUEM É A FRAN</p><h2>O cotidiano é o<br /><em>melhor lugar</em><br />para uma boa história.</h2></div>
           <div className="about-content reveal-up delay-1"><p className="lead-copy">Fran não cria uma vida para caber no conteúdo. Ela transforma o que já vive em presença, humor e inspiração para uma comunidade que gosta de se reconhecer nas histórias.</p><p>Entre a rotina de casa, o autocuidado, as conversas em família e o treino, ela abre espaço para marcas entrarem de forma orgânica — com contexto, afeto e resultado.</p><a href={PERSONAL_INSTAGRAM} target="_blank" rel="noreferrer" className="profile-link"><Instagram size={17} /> Acompanhar @franmendesgeffer <ArrowUpRight size={16} /></a></div>
           <div className="about-art" aria-hidden="true"><img src={ASSETS.routine} alt="" /></div>
+        </section>
+
+        <section className="bio-section section-shell" id="biografia" aria-labelledby="bio-title">
+          <div className="bio-heading reveal-up"><p className="eyebrow"><span /> TRAJETÓRIA PROFISSIONAL</p><h2 id="bio-title">Presença que vira<br /><em>conexão de verdade.</em></h2></div>
+          <div className="bio-content reveal-up delay-1"><p className="bio-lead">Fran Mendes Geffer é criadora de conteúdo e influenciadora digital. Desde 2014, constrói uma presença próxima, editorial e genuína, transformando cenas de lifestyle, beleza, família e movimento em histórias que geram identificação.</p><p>Com experiência em campanhas de influência, conteúdo UGC, ativações e parcerias contínuas, ela aproxima marcas da rotina com linguagem natural, repertório visual e cuidado em cada entrega.</p><div className="bio-markers"><span><strong>2014</strong> criando conexões</span><span><strong>2</strong> comunidades digitais</span><span><strong>4</strong> frentes de atuação</span></div><a href="#contato" className="profile-link">Criar uma história com a Fran <ArrowDownRight size={16} /></a></div>
         </section>
 
         <section className="story-section" id="historia">

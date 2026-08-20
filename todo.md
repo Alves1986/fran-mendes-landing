@@ -85,3 +85,10 @@ A versão recuperada corresponde ao commit `1e528ce` do repositório original. A
 - [x] Confirmar o arquivo exato de logo exibido no Manual de Marca.
 - [x] Aplicar a mesma assinatura visual no cabeçalho e rodapé da landing.
 - [x] Validar visualmente a troca em desktop e mobile; o checkpoint será salvo a seguir.
+
+## Nova ampliação — favicon, agradecimento e biografia
+
+- [x] Preparar e configurar o símbolo floral oficial como favicon do site.
+- [x] Inserir uma seção de biografia profissional da Fran na landing.
+- [x] Criar uma página de agradecimento com a assinatura visual aprovada.
+- [x] Validar as novas experiências em desktop e mobile; o checkpoint será salvo a seguir.
