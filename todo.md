@@ -58,3 +58,24 @@ A versão recuperada corresponde ao commit `1e528ce` do repositório original. A
 - [x] Remover Jurema Águas Quentes da lista de parcerias verificadas por não se tratar de publicidade.
 - [x] Validar a lista e a numeração após a remoção.
 - [x] Salvar a versão editorialmente corrigida da landing.
+
+## Novo material — Manual de Marca da Fran
+
+- [x] Consolidar os elementos visuais, verbais e editoriais já aprovados na landing.
+- [x] Redigir regras práticas para identidade, fotografia, tom de voz, CTAs e conteúdo futuro.
+- [x] Diagramar e validar o manual em Markdown reutilizável.
+- [x] Entregar o manual com orientações de uso para novos conteúdos e fornecedores.
+
+## Nova entrega — Manual de Marca visual em PDF
+
+- [x] Reunir logo, fotografias atuais e exemplos visuais da identidade da Fran.
+- [x] Diagramar o PDF com paleta, usos corretos e incorretos, tipografia, formas e aplicações.
+- [x] Validar o PDF visualmente e entregar as versões PDF e Markdown.
+
+## Nova revisão — consistência visual e cortes
+
+- [ ] Substituir a logo do site pela assinatura aprovada no manual de marca.
+- [ ] Corrigir os enquadramentos e as faixas de texto das fotos para impedir cortes de rosto e conteúdo.
+- [ ] Ajustar a foto “Rotina real” do manual para preservar a legenda integral.
+- [ ] Corrigir paginação e rodapé para eliminar espaço residual e numeração duplicada no PDF.
+- [ ] Validar as correções no site, no PDF e em telas menores antes da entrega.

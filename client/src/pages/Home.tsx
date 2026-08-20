@@ -24,7 +24,7 @@ const PERSONAL_INSTAGRAM = "https://www.instagram.com/franmendesgeffer/";
 const FITNESS_INSTAGRAM = "https://www.instagram.com/franmendes.fit/";
 const REEL_URL = "https://www.instagram.com/reel/DZk2XmYJT-D/";
 const ASSETS = {
-  brandMark: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028544755/hkWkUUFVTpXlDWfF.png",
+  wordmark: "/manus-storage/fran-mendes-geffer-wordmark_d5407bf8.png",
   caseTexture: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028544755/EFhGWqvfhDzWpryH.png",
   heroTexture: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028544755/iKqhoQrwcIhzJPsy.png",
   fitness: "/manus-storage/fran-fitness-current-v2_c08fbc8e.png",
@@ -106,14 +106,6 @@ const verifiedPartners = [
   },
 ];
 
-function BrandMark() {
-  return (
-    <span className="brand-mark" aria-hidden="true">
-      <img src={ASSETS.brandMark} alt="" />
-    </span>
-  );
-}
-
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -123,11 +115,7 @@ export default function Home() {
     <div className="site-shell">
       <header className="topbar">
         <a className="wordmark" href="#inicio" aria-label="Fran Mendes Geffer, início">
-          <BrandMark />
-          <span>
-            <strong>Fran</strong>
-            <small>MENDES GEFFER</small>
-          </span>
+          <img className="wordmark-image" src={ASSETS.wordmark} alt="Fran Mendes Geffer" />
         </a>
 
         <nav className="desktop-nav" aria-label="Navegação principal">
@@ -229,7 +217,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="footer"><a className="wordmark footer-wordmark" href="#inicio"><BrandMark /><span><strong>Fran</strong><small>MENDES GEFFER</small></span></a><p>Vida real, em boa companhia.</p><div className="footer-links"><a href={PERSONAL_INSTAGRAM} target="_blank" rel="noreferrer">Instagram pessoal</a><a href={FITNESS_INSTAGRAM} target="_blank" rel="noreferrer">Instagram fit</a><a href={AGENCY_URL} target="_blank" rel="noreferrer">Publicidade & assessoria</a></div></footer>
+      <footer className="footer"><a className="wordmark footer-wordmark" href="#inicio" aria-label="Voltar ao início"><img className="wordmark-image" src={ASSETS.wordmark} alt="Fran Mendes Geffer" /></a><p>Vida real, em boa companhia.</p><div className="footer-links"><a href={PERSONAL_INSTAGRAM} target="_blank" rel="noreferrer">Instagram pessoal</a><a href={FITNESS_INSTAGRAM} target="_blank" rel="noreferrer">Instagram fit</a><a href={AGENCY_URL} target="_blank" rel="noreferrer">Publicidade & assessoria</a></div></footer>
     </div>
   );
 }
