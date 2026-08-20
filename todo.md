@@ -153,5 +153,5 @@ A versão recuperada corresponde ao commit `1e528ce` do repositório original. A
 ## Publicação no GitHub
 
 - [x] Conferir o remoto configurado e o estado local da versão validada.
-- [ ] Enviar o checkpoint atual ao repositório GitHub informado.
-- [ ] Confirmar o commit remoto e atualizar o registro de publicação.
+- [x] Enviar o checkpoint atual ao repositório GitHub informado.
+- [x] Confirmar o commit remoto e atualizar o registro de publicação.
