@@ -29,6 +29,7 @@ const ASSETS = {
   lifestyle: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028544755/DVqDtKfKrgeBhOMY.png",
   motion: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028544755/HNGAJxfOexisoRYu.png",
   routine: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028544755/gOKFVjJHsGnzcZYT.png",
+  heroPortrait: "/manus-storage/fran-mendes-hero-atual_4312ea47.png",
   portrait: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028544755/anRMVCviHEogSAQp.jpg",
 } as const;
 
@@ -177,7 +178,7 @@ export default function Home() {
             </div>
           </div>
           <div className="hero-portrait-wrap reveal-up delay-1">
-            <div className="hero-portrait-frame"><img className="hero-portrait" src={ASSETS.portrait} alt="Fran Mendes Geffer sorrindo" /></div>
+            <div className="hero-portrait-frame"><img className="hero-portrait hero-portrait-current" src={ASSETS.heroPortrait} alt="Fran Mendes Geffer sorrindo" /></div>
             <span className="portrait-note">VIVÊNCIA REAL<br />QUE CONECTA</span><span className="terracotta-orbit" aria-hidden="true" />
           </div>
           <div className="hero-bottomline"><span>Desde 2014, criando conexões.</span><span className="scroll-cue">deslize para descobrir <ArrowDownRight size={16} /></span></div>

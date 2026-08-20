@@ -21,3 +21,9 @@ A versão recuperada corresponde ao commit `1e528ce` do repositório original. A
 - `DMYmaOiyeiE`: **GED Nutrition** — nutrição e acompanhamento nutricional.
 - `DJ-OE1cyonG`: **Teixeira Sorvetes** — alimentos, varejo e ativação local.
 - `DI9aEZkOxm-`: **Natura** — beleza, perfumaria e autocuidado.
+
+## Nova atualização — retrato principal
+
+- [x] Preparar o retrato atual enviado pela usuária como ativo otimizado da landing.
+- [x] Substituir a foto da hero e ajustar o enquadramento para desktop e mobile.
+- [x] Validar a nova composição visual e salvar uma versão atualizada.
