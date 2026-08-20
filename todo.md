@@ -105,3 +105,17 @@ A versão recuperada corresponde ao commit `1e528ce` do repositório original. A
 - [x] Implementar uma abertura discreta com o símbolo floral terracota oficial antes do conteúdo.
 - [x] Adicionar um botão flutuante de WhatsApp acessível e responsivo.
 - [x] Validar as interações em desktop e mobile; o checkpoint será salvo a seguir.
+
+## Ampliação — conversão, visibilidade e navegação
+
+- [x] Melhorar o contraste e a visibilidade do botão de download do mídia kit.
+- [x] Instrumentar os cliques do botão flutuante de WhatsApp com evento de engajamento.
+- [x] Adicionar formulário curto de briefing que encaminha a solicitação para a assessoria.
+- [x] Destacar o item correspondente à seção visível durante a rolagem.
+- [x] Validar os fluxos e a responsividade; o checkpoint será salvo a seguir.
+
+## Refinamento — composição de contato
+
+- [x] Reduzir o espaço visual excedente e equilibrar a proporção entre fotografia e conteúdo.
+- [x] Manter o briefing e os CTAs legíveis sem ampliar desnecessariamente a seção.
+- [x] Validar a nova composição em desktop e mobile; o checkpoint será salvo a seguir.

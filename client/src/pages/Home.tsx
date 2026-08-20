@@ -5,7 +5,7 @@
  * calor humano, narrativa visual assimétrica e conversão profissional.
  * A Fran é a protagonista; elementos gráficos apenas organizam sua história.
  */
-import { useEffect, useState, type MouseEvent } from "react";
+import { useEffect, useState, type FormEvent, type MouseEvent } from "react";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -25,6 +25,13 @@ const MEDIA_KIT_URL = "/manus-storage/fran-mendes-geffer-media-kit_8acce6f4.pdf"
 const PERSONAL_INSTAGRAM = "https://www.instagram.com/franmendesgeffer/";
 const FITNESS_INSTAGRAM = "https://www.instagram.com/franmendes.fit/";
 const REEL_URL = "https://www.instagram.com/reel/DZk2XmYJT-D/";
+const navigationItems = [
+  { href: "#sobre", label: "Sobre" },
+  { href: "#biografia", label: "Biografia" },
+  { href: "#parcerias", label: "Parcerias" },
+  { href: "#historia", label: "Conteúdo" },
+  { href: "#contato", label: "Contato" },
+] as const;
 const ASSETS = {
   caseTexture: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028544755/EFhGWqvfhDzWpryH.png",
   heroTexture: "https://files.manuscdn.com/user_upload_by_module/session_file/310419663028544755/iKqhoQrwcIhzJPsy.png",
@@ -110,6 +117,8 @@ const verifiedPartners = [
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [introComplete, setIntroComplete] = useState(false);
+  const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [briefStatus, setBriefStatus] = useState<"idle" | "sent">("idle");
 
   const closeMenu = () => setMenuOpen(false);
 
@@ -118,6 +127,44 @@ export default function Home() {
     const timer = window.setTimeout(() => setIntroComplete(true), reducedMotion ? 0 : 760);
     return () => window.clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    const sections = navigationItems
+      .map(({ href }) => document.querySelector<HTMLElement>(href))
+      .filter((section): section is HTMLElement => Boolean(section));
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSection = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+        if (visibleSection) setActiveSection(`#${visibleSection.target.id}`);
+      },
+      { rootMargin: "-24% 0px -58% 0px", threshold: [0.12, 0.35, 0.6] },
+    );
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, []);
+
+  const trackEngagement = (eventName: string, detail: Record<string, string> = {}) => {
+    const payload = {
+      event: eventName,
+      websiteId: import.meta.env.VITE_ANALYTICS_WEBSITE_ID,
+      path: window.location.pathname,
+      timestamp: new Date().toISOString(),
+      ...detail,
+    };
+
+    window.dispatchEvent(new CustomEvent("fran:engagement", { detail: payload }));
+    const endpoint = import.meta.env.VITE_ANALYTICS_ENDPOINT;
+    if (!endpoint) return;
+
+    const body = JSON.stringify(payload);
+    if (navigator.sendBeacon) {
+      navigator.sendBeacon(endpoint, new Blob([body], { type: "application/json" }));
+      return;
+    }
+    void fetch(endpoint, { method: "POST", headers: { "Content-Type": "application/json" }, body, keepalive: true }).catch(() => undefined);
+  };
 
   const handleInPageNavigation = (event: MouseEvent<HTMLElement>) => {
     const source = event.target as Element;
@@ -134,7 +181,30 @@ export default function Home() {
       block: "start",
     });
     window.history.replaceState(null, "", targetId);
+    setActiveSection(targetId);
     closeMenu();
+  };
+
+  const handleBriefSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const formData = new FormData(event.currentTarget);
+    const brand = String(formData.get("brand") ?? "").trim();
+    const objective = String(formData.get("objective") ?? "");
+    const format = String(formData.get("format") ?? "");
+    const context = String(formData.get("context") ?? "").trim();
+    const summary = [
+      "Olá! Gostaria de conversar sobre uma parceria com a Fran.",
+      `Marca: ${brand}`,
+      `Objetivo: ${objective}`,
+      `Formato de interesse: ${format}`,
+      context ? `Contexto: ${context}` : "",
+    ].filter(Boolean).join("\n");
+
+    trackEngagement("briefing_submit", { objective, format });
+    window.open(AGENCY_URL, "_blank", "noopener,noreferrer");
+    void navigator.clipboard?.writeText(summary).catch(() => undefined);
+    setBriefStatus("sent");
+    event.currentTarget.reset();
   };
 
   return (
@@ -151,11 +221,7 @@ export default function Home() {
         </a>
 
         <nav className="desktop-nav" aria-label="Navegação principal">
-          <a href="#sobre">Sobre</a>
-          <a href="#biografia">Biografia</a>
-          <a href="#parcerias">Parcerias</a>
-          <a href="#historia">Conteúdo</a>
-          <a href="#contato">Contato</a>
+          {navigationItems.map((item) => <a key={item.href} href={item.href} className={activeSection === item.href ? "is-active" : undefined} aria-current={activeSection === item.href ? "location" : undefined}>{item.label}</a>)}
         </nav>
 
         <a className="header-cta" href="#contato">
@@ -174,11 +240,7 @@ export default function Home() {
       </header>
 
       <div className={`mobile-menu ${menuOpen ? "is-open" : ""}`}>
-        <a href="#sobre" onClick={closeMenu}>Sobre</a>
-        <a href="#biografia" onClick={closeMenu}>Biografia</a>
-        <a href="#parcerias" onClick={closeMenu}>Parcerias</a>
-        <a href="#historia" onClick={closeMenu}>Conteúdo</a>
-        <a href="#contato" onClick={closeMenu}>Contato</a>
+        {navigationItems.map((item) => <a key={item.href} href={item.href} className={activeSection === item.href ? "is-active" : undefined} aria-current={activeSection === item.href ? "location" : undefined} onClick={closeMenu}>{item.label}</a>)}
       </div>
 
       <main>
@@ -252,12 +314,12 @@ export default function Home() {
 
         <section className="contact-section" id="contato">
           <div className="contact-visual" aria-hidden="true"><img src={ASSETS.heroPortrait} alt="" /><span className="contact-sun">✳</span></div>
-          <div className="contact-copy"><p className="eyebrow eyebrow-light"><span /> VAMOS CONVERSAR</p><h2>Tem uma ideia na<br />cabeça? Vamos<br /><em>colocar em cena.</em></h2><p>Conte para a assessoria o que sua marca quer viver. A conversa começa por WhatsApp e o formato é desenhado a partir do objetivo da campanha.</p><p className="contact-note">Pode ter começado numa conversa de café. As boas histórias, quase sempre, começam assim.</p><div className="contact-actions"><a className="button button-light" href={AGENCY_URL} target="_blank" rel="noreferrer">Abrir conversa com a assessoria <Send size={18} /></a><a className="media-kit-link" href={MEDIA_KIT_URL} download="midia-kit-fran-mendes-geffer.pdf" aria-label="Baixar mídia kit da Fran Mendes Geffer em PDF"><Download size={17} /> Baixar mídia kit <span>PDF</span></a><a className="direct-contact" href={AGENCY_URL} target="_blank" rel="noreferrer">Prefere chamar agora? Fale com a assessoria <ArrowUpRight size={17} /></a></div></div>
+          <div className="contact-copy"><p className="eyebrow eyebrow-light"><span /> VAMOS CONVERSAR</p><h2>Tem uma ideia na<br />cabeça? Vamos<br /><em>colocar em cena.</em></h2><p>Conte para a assessoria o que sua marca quer viver. A conversa começa por WhatsApp e o formato é desenhado a partir do objetivo da campanha.</p><p className="contact-note">Pode ter começado numa conversa de café. As boas histórias, quase sempre, começam assim.</p><div className="contact-actions"><a className="button button-light" href={AGENCY_URL} target="_blank" rel="noreferrer">Abrir conversa com a assessoria <Send size={18} /></a><a className="media-kit-link" href={MEDIA_KIT_URL} download="midia-kit-fran-mendes-geffer.pdf" aria-label="Baixar mídia kit da Fran Mendes Geffer em PDF"><Download size={17} /> Baixar mídia kit <span>PDF</span></a><a className="direct-contact" href={AGENCY_URL} target="_blank" rel="noreferrer">Prefere chamar agora? Fale com a assessoria <ArrowUpRight size={17} /></a></div><form className="brief-form" onSubmit={handleBriefSubmit}><div className="brief-heading"><span>BRIEFING RÁPIDO</span><p>Deixe o contexto pronto para a conversa.</p></div><label>Marca<input name="brand" required placeholder="Nome da marca" autoComplete="organization" /></label><div className="brief-selects"><label>Objetivo<select name="objective" required defaultValue=""><option value="" disabled>Selecione</option><option value="Lançamento de produto">Lançamento de produto</option><option value="Fortalecer presença de marca">Fortalecer presença de marca</option><option value="Campanha sazonal">Campanha sazonal</option><option value="Outro objetivo">Outro objetivo</option></select></label><label>Formato<select name="format" required defaultValue=""><option value="" disabled>Selecione</option><option value="Campanha de influência">Campanha de influência</option><option value="Conteúdo UGC">Conteúdo UGC</option><option value="Embaixadora de marca">Embaixadora de marca</option><option value="Evento ou ativação">Evento ou ativação</option></select></label></div><label>Contexto (opcional)<textarea name="context" rows={2} placeholder="Produto, período ou ideia inicial" /></label><button className="brief-submit" type="submit">Continuar pelo WhatsApp <Send size={16} /></button>{briefStatus === "sent" && <p className="brief-feedback" role="status">Resumo copiado. Cole a mensagem no WhatsApp para agilizar o atendimento.</p>}</form></div>
         </section>
       </main>
 
       <footer className="footer"><a className="wordmark footer-wordmark" href="#inicio" aria-label="Voltar ao início"><BrandLockup /></a><p>Vida real, em boa companhia.</p><div className="footer-links"><a href={PERSONAL_INSTAGRAM} target="_blank" rel="noreferrer">Instagram pessoal</a><a href={FITNESS_INSTAGRAM} target="_blank" rel="noreferrer">Instagram fit</a><a href={AGENCY_URL} target="_blank" rel="noreferrer">Publicidade & assessoria</a></div></footer>
-        <a className="whatsapp-float" href={AGENCY_URL} target="_blank" rel="noreferrer" aria-label="Falar com a assessoria da Fran pelo WhatsApp">
+        <a className="whatsapp-float" href={AGENCY_URL} target="_blank" rel="noreferrer" onClick={() => trackEngagement("whatsapp_float_click", { placement: "floating_button" })} aria-label="Falar com a assessoria da Fran pelo WhatsApp">
           <MessageCircle size={22} strokeWidth={2.2} aria-hidden="true" />
           <span>WhatsApp</span>
         </a>
