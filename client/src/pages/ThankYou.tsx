@@ -5,8 +5,7 @@
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { BrandLockup } from "@/components/BrandLockup";
 import { SocialMeta } from "@/components/SocialMeta";
-
-const AGENCY_URL = "https://wa.link/f8gtsj";
+import { SITE_CONTACT_URL } from "@/lib/contact";
 
 export default function ThankYou() {
   return (
@@ -36,7 +35,7 @@ export default function ThankYou() {
           <p className="thanks-support">Enquanto a conversa ganha forma, você pode voltar para conhecer os formatos, as marcas parceiras e o universo da Fran.</p>
           <div className="thanks-actions">
             <a className="button button-coral" href="/">Conhecer a Fran <ArrowUpRight size={18} /></a>
-            <a className="text-link" href={AGENCY_URL} target="_blank" rel="noreferrer">Falar com a assessoria <span>↗</span></a>
+            <a className="text-link" href={SITE_CONTACT_URL} target="_blank" rel="noreferrer">Falar com a assessoria <span>↗</span></a>
           </div>
         </div>
 

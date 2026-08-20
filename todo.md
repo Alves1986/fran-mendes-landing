@@ -134,3 +134,11 @@ A versão recuperada corresponde ao commit `1e528ce` do repositório original. A
 - [x] Informar o prazo estimado de resposta da assessoria abaixo das ações de contato.
 - [x] Exibir uma confirmação elegante e clara após o envio do briefing.
 - [x] Validar os comportamentos em desktop e mobile; o checkpoint será salvo a seguir.
+
+## Ampliação — privacidade e conclusão de contato
+
+- [x] Corrigir a sobreposição e garantir a leitura integral do rodapé.
+- [x] Contextualizar as mensagens dos botões de WhatsApp para informar que o contato veio pelo site.
+- [x] Criar página simples de política de privacidade e adicionar aceite obrigatório no briefing.
+- [x] Aprimorar a confirmação de briefing com o símbolo floral e movimento de sucesso suave.
+- [x] Validar as novas experiências em desktop e mobile; o checkpoint será salvo a seguir.

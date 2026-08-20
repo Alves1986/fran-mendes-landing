@@ -19,9 +19,9 @@ import {
   X,
 } from "lucide-react";
 import { BRAND_SYMBOL, BrandLockup } from "@/components/BrandLockup";
+import { SITE_CONTACT_URL, whatsappUrl } from "@/lib/contact";
 import "@/hero-stability.css";
 
-const AGENCY_URL = "https://wa.link/f8gtsj";
 const MEDIA_KIT_URL = "/manus-storage/fran-mendes-geffer-media-kit_8acce6f4.pdf";
 const PERSONAL_INSTAGRAM = "https://www.instagram.com/franmendesgeffer/";
 const FITNESS_INSTAGRAM = "https://www.instagram.com/franmendes.fit/";
@@ -194,7 +194,7 @@ export default function Home() {
     const format = String(formData.get("format") ?? "");
     const context = String(formData.get("context") ?? "").trim();
     const summary = [
-      "Olá! Gostaria de conversar sobre uma parceria com a Fran.",
+      "Olá! Cheguei pelo site da Fran Mendes Geffer e gostaria de conversar sobre uma parceria.",
       `Marca: ${brand}`,
       `Objetivo: ${objective}`,
       `Formato de interesse: ${format}`,
@@ -202,7 +202,7 @@ export default function Home() {
     ].filter(Boolean).join("\n");
 
     trackEngagement("briefing_submit", { objective, format });
-    window.open(AGENCY_URL, "_blank", "noopener,noreferrer");
+    window.open(whatsappUrl(summary), "_blank", "noopener,noreferrer");
     void navigator.clipboard?.writeText(summary).catch(() => undefined);
     setBriefStatus("sent");
     event.currentTarget.reset();
@@ -321,9 +321,9 @@ export default function Home() {
             <p>Conte para a assessoria o que sua marca quer viver. A conversa começa por WhatsApp e o formato é desenhado a partir do objetivo da campanha.</p>
             <p className="contact-note">Pode ter começado numa conversa de café. As boas histórias, quase sempre, começam assim.</p>
             <div className="contact-actions">
-              <a className="button button-light" href={AGENCY_URL} target="_blank" rel="noreferrer" onClick={() => trackEngagement("contact_cta_click", { cta: "primary_assessoria", destination: "whatsapp" })}>Abrir conversa com a assessoria <Send size={18} /></a>
+              <a className="button button-light" href={SITE_CONTACT_URL} target="_blank" rel="noreferrer" onClick={() => trackEngagement("contact_cta_click", { cta: "primary_assessoria", destination: "whatsapp" })}>Abrir conversa com a assessoria <Send size={18} /></a>
               <a className="media-kit-link" href={MEDIA_KIT_URL} download="midia-kit-fran-mendes-geffer.pdf" aria-label="Baixar mídia kit da Fran Mendes Geffer em PDF" onClick={() => trackEngagement("contact_cta_click", { cta: "media_kit", destination: "download" })}><Download size={17} /> Baixar mídia kit <span>PDF</span></a>
-              <a className="direct-contact" href={AGENCY_URL} target="_blank" rel="noreferrer" onClick={() => trackEngagement("contact_cta_click", { cta: "secondary_assessoria", destination: "whatsapp" })}>Prefere chamar agora? Fale com a assessoria <ArrowUpRight size={17} /></a>
+              <a className="direct-contact" href={SITE_CONTACT_URL} target="_blank" rel="noreferrer" onClick={() => trackEngagement("contact_cta_click", { cta: "secondary_assessoria", destination: "whatsapp" })}>Prefere chamar agora? Fale com a assessoria <ArrowUpRight size={17} /></a>
             </div>
             <p className="contact-response-time"><Check size={15} aria-hidden="true" /> Prazo estimado de resposta da assessoria: <strong>até 2 dias úteis.</strong></p>
             <form className="brief-form" onSubmit={handleBriefSubmit}>
@@ -331,15 +331,16 @@ export default function Home() {
               <label>Marca<input name="brand" required placeholder="Nome da marca" autoComplete="organization" /></label>
               <div className="brief-selects"><label>Objetivo<select name="objective" required defaultValue=""><option value="" disabled>Selecione</option><option value="Lançamento de produto">Lançamento de produto</option><option value="Fortalecer presença de marca">Fortalecer presença de marca</option><option value="Campanha sazonal">Campanha sazonal</option><option value="Outro objetivo">Outro objetivo</option></select></label><label>Formato<select name="format" required defaultValue=""><option value="" disabled>Selecione</option><option value="Campanha de influência">Campanha de influência</option><option value="Conteúdo UGC">Conteúdo UGC</option><option value="Embaixadora de marca">Embaixadora de marca</option><option value="Evento ou ativação">Evento ou ativação</option></select></label></div>
               <label>Contexto (opcional)<textarea name="context" rows={2} placeholder="Produto, período ou ideia inicial" /></label>
+              <label className="brief-consent"><input name="privacy-consent" type="checkbox" required /> <span>Li e concordo com a <a href="/privacidade" target="_blank" rel="noreferrer">Política de Privacidade</a> para o atendimento deste briefing.</span></label>
               <button className="brief-submit" type="submit">Continuar pelo WhatsApp <Send size={16} /></button>
-              {briefStatus === "sent" && <div className="brief-feedback" role="status"><Check size={18} aria-hidden="true" /><div><strong>Briefing preparado.</strong><span>A conversa foi aberta no WhatsApp. Se ela não aparecer, use um dos botões acima e cole o resumo copiado.</span></div></div>}
+              {briefStatus === "sent" && <div className="brief-feedback" role="status"><div className="brief-feedback-symbol" aria-hidden="true"><img src={BRAND_SYMBOL} alt="" /></div><div><strong>Seu briefing está a caminho.</strong><span>A mensagem foi aberta no WhatsApp e o resumo também foi copiado. A assessoria costuma responder em até 2 dias úteis.</span></div></div>}
             </form>
           </div>
         </section>
       </main>
 
-      <footer className="footer"><a className="wordmark footer-wordmark" href="#inicio" aria-label="Voltar ao início"><BrandLockup /></a><p>Vida real, em boa companhia.</p><div className="footer-links"><a href={PERSONAL_INSTAGRAM} target="_blank" rel="noreferrer">Instagram pessoal</a><a href={FITNESS_INSTAGRAM} target="_blank" rel="noreferrer">Instagram fit</a><a href={AGENCY_URL} target="_blank" rel="noreferrer">Publicidade & assessoria</a></div></footer>
-        <a className="whatsapp-float" href={AGENCY_URL} target="_blank" rel="noreferrer" onClick={() => trackEngagement("whatsapp_float_click", { placement: "floating_button" })} aria-label="Falar com a assessoria da Fran pelo WhatsApp">
+      <footer className="footer"><a className="wordmark footer-wordmark" href="#inicio" aria-label="Voltar ao início"><BrandLockup /></a><p>Vida real, em boa companhia.</p><div className="footer-links"><a href={PERSONAL_INSTAGRAM} target="_blank" rel="noreferrer">Instagram pessoal</a><a href={FITNESS_INSTAGRAM} target="_blank" rel="noreferrer">Instagram fit</a><a href={SITE_CONTACT_URL} target="_blank" rel="noreferrer" onClick={() => trackEngagement("contact_cta_click", { cta: "footer_assessoria", destination: "whatsapp" })}>Publicidade & assessoria</a><a href="/privacidade">Privacidade</a></div></footer>
+        <a className="whatsapp-float" href={SITE_CONTACT_URL} target="_blank" rel="noreferrer" onClick={() => trackEngagement("whatsapp_float_click", { placement: "floating_button" })} aria-label="Falar com a assessoria da Fran pelo WhatsApp">
           <MessageCircle size={22} strokeWidth={2.2} aria-hidden="true" />
           <span>WhatsApp</span>
         </a>
