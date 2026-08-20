@@ -1,0 +1,79 @@
+/**
+ * Design reminder — Editorial de casa aberta:
+ * a hero deve parecer preenchida, acolhedora e imediatamente legível;
+ * a protagonista e a mensagem comercial dividem o primeiro plano.
+ */
+
+@media (min-width: 901px) {
+  .hero {
+    height: clamp(720px, calc(100svh - 86px), 760px) !important;
+    min-height: 720px !important;
+    padding: clamp(38px, 2.25vw, 46px) 4.3vw clamp(82px, 5vw, 100px) !important;
+    align-items: start !important;
+  }
+
+  .hero-copy {
+    align-self: start !important;
+    padding-bottom: 0 !important;
+  }
+
+  .hero-portrait-wrap {
+    align-self: start !important;
+  }
+}
+
+.contact-response-time {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  max-width: 440px;
+  margin: 17px 0 0;
+  color: rgba(255, 253, 249, 0.69);
+  font-size: 10px;
+  font-weight: 700;
+  line-height: 1.55;
+}
+
+.contact-response-time svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+  color: var(--coral);
+}
+
+.contact-response-time strong {
+  color: var(--paper);
+}
+
+.brief-feedback {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  margin: 15px 0 0;
+  padding: 13px 14px;
+  border: 1px solid rgba(245, 176, 165, 0.42);
+  background: rgba(216, 111, 98, 0.12);
+  color: var(--paper);
+}
+
+.brief-feedback > svg {
+  flex: 0 0 auto;
+  margin-top: 1px;
+  color: #f5b0a5;
+}
+
+.brief-feedback strong,
+.brief-feedback span {
+  display: block;
+}
+
+.brief-feedback strong {
+  margin-bottom: 3px;
+  font-size: 11px;
+  letter-spacing: 0.02em;
+}
+
+.brief-feedback span {
+  color: rgba(255, 253, 249, 0.72);
+  font-size: 10px;
+  line-height: 1.5;
+}

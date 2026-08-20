@@ -19,6 +19,7 @@ import {
   X,
 } from "lucide-react";
 import { BRAND_SYMBOL, BrandLockup } from "@/components/BrandLockup";
+import "@/hero-stability.css";
 
 const AGENCY_URL = "https://wa.link/f8gtsj";
 const MEDIA_KIT_URL = "/manus-storage/fran-mendes-geffer-media-kit_8acce6f4.pdf";
@@ -314,7 +315,26 @@ export default function Home() {
 
         <section className="contact-section" id="contato">
           <div className="contact-visual" aria-hidden="true"><img src={ASSETS.heroPortrait} alt="" /><span className="contact-sun">✳</span></div>
-          <div className="contact-copy"><p className="eyebrow eyebrow-light"><span /> VAMOS CONVERSAR</p><h2>Tem uma ideia na<br />cabeça? Vamos<br /><em>colocar em cena.</em></h2><p>Conte para a assessoria o que sua marca quer viver. A conversa começa por WhatsApp e o formato é desenhado a partir do objetivo da campanha.</p><p className="contact-note">Pode ter começado numa conversa de café. As boas histórias, quase sempre, começam assim.</p><div className="contact-actions"><a className="button button-light" href={AGENCY_URL} target="_blank" rel="noreferrer">Abrir conversa com a assessoria <Send size={18} /></a><a className="media-kit-link" href={MEDIA_KIT_URL} download="midia-kit-fran-mendes-geffer.pdf" aria-label="Baixar mídia kit da Fran Mendes Geffer em PDF"><Download size={17} /> Baixar mídia kit <span>PDF</span></a><a className="direct-contact" href={AGENCY_URL} target="_blank" rel="noreferrer">Prefere chamar agora? Fale com a assessoria <ArrowUpRight size={17} /></a></div><form className="brief-form" onSubmit={handleBriefSubmit}><div className="brief-heading"><span>BRIEFING RÁPIDO</span><p>Deixe o contexto pronto para a conversa.</p></div><label>Marca<input name="brand" required placeholder="Nome da marca" autoComplete="organization" /></label><div className="brief-selects"><label>Objetivo<select name="objective" required defaultValue=""><option value="" disabled>Selecione</option><option value="Lançamento de produto">Lançamento de produto</option><option value="Fortalecer presença de marca">Fortalecer presença de marca</option><option value="Campanha sazonal">Campanha sazonal</option><option value="Outro objetivo">Outro objetivo</option></select></label><label>Formato<select name="format" required defaultValue=""><option value="" disabled>Selecione</option><option value="Campanha de influência">Campanha de influência</option><option value="Conteúdo UGC">Conteúdo UGC</option><option value="Embaixadora de marca">Embaixadora de marca</option><option value="Evento ou ativação">Evento ou ativação</option></select></label></div><label>Contexto (opcional)<textarea name="context" rows={2} placeholder="Produto, período ou ideia inicial" /></label><button className="brief-submit" type="submit">Continuar pelo WhatsApp <Send size={16} /></button>{briefStatus === "sent" && <p className="brief-feedback" role="status">Resumo copiado. Cole a mensagem no WhatsApp para agilizar o atendimento.</p>}</form></div>
+          <div className="contact-copy">
+            <p className="eyebrow eyebrow-light"><span /> VAMOS CONVERSAR</p>
+            <h2>Tem uma ideia na<br />cabeça? Vamos<br /><em>colocar em cena.</em></h2>
+            <p>Conte para a assessoria o que sua marca quer viver. A conversa começa por WhatsApp e o formato é desenhado a partir do objetivo da campanha.</p>
+            <p className="contact-note">Pode ter começado numa conversa de café. As boas histórias, quase sempre, começam assim.</p>
+            <div className="contact-actions">
+              <a className="button button-light" href={AGENCY_URL} target="_blank" rel="noreferrer" onClick={() => trackEngagement("contact_cta_click", { cta: "primary_assessoria", destination: "whatsapp" })}>Abrir conversa com a assessoria <Send size={18} /></a>
+              <a className="media-kit-link" href={MEDIA_KIT_URL} download="midia-kit-fran-mendes-geffer.pdf" aria-label="Baixar mídia kit da Fran Mendes Geffer em PDF" onClick={() => trackEngagement("contact_cta_click", { cta: "media_kit", destination: "download" })}><Download size={17} /> Baixar mídia kit <span>PDF</span></a>
+              <a className="direct-contact" href={AGENCY_URL} target="_blank" rel="noreferrer" onClick={() => trackEngagement("contact_cta_click", { cta: "secondary_assessoria", destination: "whatsapp" })}>Prefere chamar agora? Fale com a assessoria <ArrowUpRight size={17} /></a>
+            </div>
+            <p className="contact-response-time"><Check size={15} aria-hidden="true" /> Prazo estimado de resposta da assessoria: <strong>até 2 dias úteis.</strong></p>
+            <form className="brief-form" onSubmit={handleBriefSubmit}>
+              <div className="brief-heading"><span>BRIEFING RÁPIDO</span><p>Deixe o contexto pronto para a conversa.</p></div>
+              <label>Marca<input name="brand" required placeholder="Nome da marca" autoComplete="organization" /></label>
+              <div className="brief-selects"><label>Objetivo<select name="objective" required defaultValue=""><option value="" disabled>Selecione</option><option value="Lançamento de produto">Lançamento de produto</option><option value="Fortalecer presença de marca">Fortalecer presença de marca</option><option value="Campanha sazonal">Campanha sazonal</option><option value="Outro objetivo">Outro objetivo</option></select></label><label>Formato<select name="format" required defaultValue=""><option value="" disabled>Selecione</option><option value="Campanha de influência">Campanha de influência</option><option value="Conteúdo UGC">Conteúdo UGC</option><option value="Embaixadora de marca">Embaixadora de marca</option><option value="Evento ou ativação">Evento ou ativação</option></select></label></div>
+              <label>Contexto (opcional)<textarea name="context" rows={2} placeholder="Produto, período ou ideia inicial" /></label>
+              <button className="brief-submit" type="submit">Continuar pelo WhatsApp <Send size={16} /></button>
+              {briefStatus === "sent" && <div className="brief-feedback" role="status"><Check size={18} aria-hidden="true" /><div><strong>Briefing preparado.</strong><span>A conversa foi aberta no WhatsApp. Se ela não aparecer, use um dos botões acima e cole o resumo copiado.</span></div></div>}
+            </form>
+          </div>
         </section>
       </main>
 

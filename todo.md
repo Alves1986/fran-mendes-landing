@@ -126,3 +126,11 @@ A versão recuperada corresponde ao commit `1e528ce` do repositório original. A
 - [x] Devolver largura e prioridade visual ao título e à mensagem de contato.
 - [x] Reposicionar o briefing abaixo do conteúdo principal sem comprimir a leitura.
 - [x] Validar a composição corrigida em desktop e mobile; o checkpoint será salvo a seguir.
+
+## Ampliação — hero estável e conversão assistida
+
+- [x] Fixar a composição preenchida da hero ao retornar à seção inicial.
+- [x] Rastrear os cliques dos CTAs da área de contato com eventos de conversão identificáveis.
+- [x] Informar o prazo estimado de resposta da assessoria abaixo das ações de contato.
+- [x] Exibir uma confirmação elegante e clara após o envio do briefing.
+- [x] Validar os comportamentos em desktop e mobile; o checkpoint será salvo a seguir.
