@@ -10,6 +10,7 @@ import {
   ArrowDownRight,
   ArrowUpRight,
   Check,
+  Download,
   Instagram,
   Menu,
   Play,
@@ -18,6 +19,7 @@ import {
 } from "lucide-react";
 
 const AGENCY_URL = "https://wa.link/f8gtsj";
+const MEDIA_KIT_URL = "/manus-storage/fran-mendes-geffer-media-kit_8acce6f4.pdf";
 const PERSONAL_INSTAGRAM = "https://www.instagram.com/franmendesgeffer/";
 const FITNESS_INSTAGRAM = "https://www.instagram.com/franmendes.fit/";
 const REEL_URL = "https://www.instagram.com/reel/DZk2XmYJT-D/";
@@ -81,11 +83,6 @@ const verifiedPartners = [
     name: "Haskell",
     category: "beleza & cuidado capilar",
     href: "https://www.instagram.com/reel/Db6By58wOs4/",
-  },
-  {
-    name: "Jurema Águas Quentes",
-    category: "turismo & bem-estar",
-    href: "https://www.instagram.com/franmendesgeffer/reel/DcKC4rFT1jg/",
   },
   {
     name: "99",
@@ -228,7 +225,7 @@ export default function Home() {
 
         <section className="contact-section" id="contato">
           <div className="contact-visual" aria-hidden="true"><img src={ASSETS.heroPortrait} alt="" /><span className="contact-sun">✳</span></div>
-          <div className="contact-copy"><p className="eyebrow eyebrow-light"><span /> VAMOS CONVERSAR</p><h2>Tem uma ideia na<br />cabeça? Vamos<br /><em>colocar em cena.</em></h2><p>Conte para a assessoria o que sua marca quer viver. A conversa começa por WhatsApp e o formato é desenhado a partir do objetivo da campanha.</p><p className="contact-note">Pode ter começado numa conversa de café. As boas histórias, quase sempre, começam assim.</p><div className="contact-actions"><a className="button button-light" href={AGENCY_URL} target="_blank" rel="noreferrer">Abrir conversa com a assessoria <Send size={18} /></a><a className="direct-contact" href={AGENCY_URL} target="_blank" rel="noreferrer">Prefere chamar agora? Fale com a assessoria <ArrowUpRight size={17} /></a></div></div>
+          <div className="contact-copy"><p className="eyebrow eyebrow-light"><span /> VAMOS CONVERSAR</p><h2>Tem uma ideia na<br />cabeça? Vamos<br /><em>colocar em cena.</em></h2><p>Conte para a assessoria o que sua marca quer viver. A conversa começa por WhatsApp e o formato é desenhado a partir do objetivo da campanha.</p><p className="contact-note">Pode ter começado numa conversa de café. As boas histórias, quase sempre, começam assim.</p><div className="contact-actions"><a className="button button-light" href={AGENCY_URL} target="_blank" rel="noreferrer">Abrir conversa com a assessoria <Send size={18} /></a><a className="media-kit-link" href={MEDIA_KIT_URL} download="midia-kit-fran-mendes-geffer.pdf" aria-label="Baixar mídia kit da Fran Mendes Geffer em PDF"><Download size={17} /> Baixar mídia kit <span>PDF</span></a><a className="direct-contact" href={AGENCY_URL} target="_blank" rel="noreferrer">Prefere chamar agora? Fale com a assessoria <ArrowUpRight size={17} /></a></div></div>
         </section>
       </main>
 

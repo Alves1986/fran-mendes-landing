@@ -45,3 +45,16 @@ A versão recuperada corresponde ao commit `1e528ce` do repositório original. A
 ### Habilidade criada
 
 - `editorial-landing-refresh`: habilidade validada para futuras atualizações de fotografias, CTAs de âncora, enquadramento responsivo e checkpoints de landing pages editoriais.
+
+## Nova atualização — mídia kit e habilidade
+
+- [x] Localizar ou preparar o arquivo atual do mídia kit para download direto.
+- [x] Adicionar um botão de download na seção de contato, com nome e atributos de acessibilidade adequados.
+- [x] Expandir a habilidade reutilizável com o fluxo de disponibilização de mídia kit e ativos baixáveis.
+- [x] Validar o download e a apresentação responsiva, então salvar uma nova versão da landing.
+
+## Nova revisão — parceria não confirmada
+
+- [x] Remover Jurema Águas Quentes da lista de parcerias verificadas por não se tratar de publicidade.
+- [x] Validar a lista e a numeração após a remoção.
+- [x] Salvar a versão editorialmente corrigida da landing.
