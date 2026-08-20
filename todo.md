@@ -145,7 +145,13 @@ A versão recuperada corresponde ao commit `1e528ce` do repositório original. A
 
 ## Ampliação — consentimento e validação do briefing
 
-- [ ] Adicionar banner discreto de cookies com ação clara de aceite e persistência da preferência.
-- [ ] Implementar validações em tempo real e mensagens acessíveis nos campos do briefing.
-- [ ] Garantir que o envio do briefing permaneça bloqueado até a correção dos dados inválidos.
-- [ ] Validar o banner e o formulário em desktop e mobile e salvar um checkpoint.
+- [x] Adicionar banner discreto de cookies com ação clara de aceite e persistência da preferência.
+- [x] Implementar validações em tempo real e mensagens acessíveis nos campos do briefing.
+- [x] Garantir que o envio do briefing permaneça bloqueado até a correção dos dados inválidos.
+- [x] Validar o banner e o formulário em desktop e mobile e salvar um checkpoint.
+
+## Publicação no GitHub
+
+- [x] Conferir o remoto configurado e o estado local da versão validada.
+- [ ] Enviar o checkpoint atual ao repositório GitHub informado.
+- [ ] Confirmar o commit remoto e atualizar o registro de publicação.
