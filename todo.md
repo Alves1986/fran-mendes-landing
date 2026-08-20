@@ -27,3 +27,9 @@ A versão recuperada corresponde ao commit `1e528ce` do repositório original. A
 - [x] Preparar o retrato atual enviado pela usuária como ativo otimizado da landing.
 - [x] Substituir a foto da hero e ajustar o enquadramento para desktop e mobile.
 - [x] Validar a nova composição visual e salvar uma versão atualizada.
+
+## Nova atualização — bloco de contato
+
+- [x] Usar o retrato atual já enviado também como imagem do bloco final de contato.
+- [x] Validar o enquadramento e o contraste do bloco em desktop e mobile.
+- [x] Salvar uma nova versão validada da landing.
