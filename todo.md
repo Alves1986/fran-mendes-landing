@@ -119,3 +119,10 @@ A versão recuperada corresponde ao commit `1e528ce` do repositório original. A
 - [x] Reduzir o espaço visual excedente e equilibrar a proporção entre fotografia e conteúdo.
 - [x] Manter o briefing e os CTAs legíveis sem ampliar desnecessariamente a seção.
 - [x] Validar a nova composição em desktop e mobile; o checkpoint será salvo a seguir.
+
+## Correção prioritária — hierarquia da área de contato
+
+- [x] Reduzir a predominância da fotografia no desktop.
+- [x] Devolver largura e prioridade visual ao título e à mensagem de contato.
+- [x] Reposicionar o briefing abaixo do conteúdo principal sem comprimir a leitura.
+- [x] Validar a composição corrigida em desktop e mobile; o checkpoint será salvo a seguir.
