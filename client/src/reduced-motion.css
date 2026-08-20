@@ -2,4 +2,6 @@
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   .reveal-up { animation: none; }
+  .brand-preloader-emblem,
+  .brand-preloader-emblem img { animation: none; }
 }

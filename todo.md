@@ -98,3 +98,10 @@ A versão recuperada corresponde ao commit `1e528ce` do repositório original. A
 - [x] Criar e publicar imagem de compartilhamento coerente com a identidade da Fran.
 - [x] Configurar Open Graph, Twitter Cards e descrições específicas para cada página.
 - [x] Validar a presença das tags e a renderização da landing e da página de agradecimento.
+
+## Ampliação — interações da landing
+
+- [x] Aplicar rolagem suave e com compensação de cabeçalho aos links de navegação internos.
+- [x] Implementar uma abertura discreta com o símbolo floral terracota oficial antes do conteúdo.
+- [x] Adicionar um botão flutuante de WhatsApp acessível e responsivo.
+- [x] Validar as interações em desktop e mobile; o checkpoint será salvo a seguir.

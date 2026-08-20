@@ -5,7 +5,7 @@
  * calor humano, narrativa visual assimétrica e conversão profissional.
  * A Fran é a protagonista; elementos gráficos apenas organizam sua história.
  */
-import { useState } from "react";
+import { useEffect, useState, type MouseEvent } from "react";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -13,11 +13,12 @@ import {
   Download,
   Instagram,
   Menu,
+  MessageCircle,
   Play,
   Send,
   X,
 } from "lucide-react";
-import { BrandLockup } from "@/components/BrandLockup";
+import { BRAND_SYMBOL, BrandLockup } from "@/components/BrandLockup";
 
 const AGENCY_URL = "https://wa.link/f8gtsj";
 const MEDIA_KIT_URL = "/manus-storage/fran-mendes-geffer-media-kit_8acce6f4.pdf";
@@ -108,11 +109,42 @@ const verifiedPartners = [
 
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
+  const [introComplete, setIntroComplete] = useState(false);
 
   const closeMenu = () => setMenuOpen(false);
 
+  useEffect(() => {
+    const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const timer = window.setTimeout(() => setIntroComplete(true), reducedMotion ? 0 : 760);
+    return () => window.clearTimeout(timer);
+  }, []);
+
+  const handleInPageNavigation = (event: MouseEvent<HTMLElement>) => {
+    const source = event.target as Element;
+    const link = source.closest<HTMLAnchorElement>('a[href^="#"]');
+    const targetId = link?.getAttribute("href");
+    if (!targetId || targetId === "#") return;
+
+    const destination = document.querySelector<HTMLElement>(targetId);
+    if (!destination) return;
+
+    event.preventDefault();
+    destination.scrollIntoView({
+      behavior: window.matchMedia("(prefers-reduced-motion: reduce)").matches ? "auto" : "smooth",
+      block: "start",
+    });
+    window.history.replaceState(null, "", targetId);
+    closeMenu();
+  };
+
   return (
-    <div className="site-shell">
+    <>
+      <div className={`brand-preloader ${introComplete ? "is-complete" : ""}`} role="status" aria-live="polite" aria-hidden={introComplete}>
+        <div className="brand-preloader-emblem"><img src={BRAND_SYMBOL} alt="" /></div>
+        <span>Preparando uma boa história</span>
+      </div>
+
+      <div className={`site-shell ${introComplete ? "" : "is-loading"}`} onClick={handleInPageNavigation}>
       <header className="topbar">
         <a className="wordmark" href="#inicio" aria-label="Fran Mendes Geffer, início">
           <BrandLockup />
@@ -225,6 +257,11 @@ export default function Home() {
       </main>
 
       <footer className="footer"><a className="wordmark footer-wordmark" href="#inicio" aria-label="Voltar ao início"><BrandLockup /></a><p>Vida real, em boa companhia.</p><div className="footer-links"><a href={PERSONAL_INSTAGRAM} target="_blank" rel="noreferrer">Instagram pessoal</a><a href={FITNESS_INSTAGRAM} target="_blank" rel="noreferrer">Instagram fit</a><a href={AGENCY_URL} target="_blank" rel="noreferrer">Publicidade & assessoria</a></div></footer>
-    </div>
+        <a className="whatsapp-float" href={AGENCY_URL} target="_blank" rel="noreferrer" aria-label="Falar com a assessoria da Fran pelo WhatsApp">
+          <MessageCircle size={22} strokeWidth={2.2} aria-hidden="true" />
+          <span>WhatsApp</span>
+        </a>
+      </div>
+    </>
   );
 }

@@ -2,7 +2,7 @@
  * Design reminder — assinatura oficial da Fran: símbolo floral terracota,
  * nome editorial e espaçamento calmo, como no Manual de Marca.
  */
-const BRAND_SYMBOL = "/manus-storage/fran-mendes-geffer-manual-symbol_f5cf3c42.png";
+export const BRAND_SYMBOL = "/manus-storage/fran-mendes-geffer-manual-symbol_f5cf3c42.png";
 
 export function BrandLockup() {
   return (
