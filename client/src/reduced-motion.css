@@ -1,0 +1,5 @@
+/* Design reminder — Editorial de casa aberta: movimento suave, sempre opcional. */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal-up { animation: none; }
+}

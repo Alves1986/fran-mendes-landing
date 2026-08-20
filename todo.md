@@ -33,3 +33,15 @@ A versão recuperada corresponde ao commit `1e528ce` do repositório original. A
 - [x] Usar o retrato atual já enviado também como imagem do bloco final de contato.
 - [x] Validar o enquadramento e o contraste do bloco em desktop e mobile.
 - [x] Salvar uma nova versão validada da landing.
+
+## Nova atualização — navegação, fotografia e habilidade reutilizável
+
+- [x] Implementar rolagem suave para todos os botões e links que apontam ao bloco de contato.
+- [x] Atualizar a foto da seção “Quem é a Fran” com uma imagem atual e coerente com a identidade editorial.
+- [x] Atualizar as imagens da seção “Conteúdo” para uma direção visual contemporânea e consistente.
+- [x] Criar e validar uma habilidade reutilizável que documente este fluxo de atualização de landing page.
+- [x] Validar a experiência em desktop e mobile e salvar uma nova versão da landing.
+
+### Habilidade criada
+
+- `editorial-landing-refresh`: habilidade validada para futuras atualizações de fotografias, CTAs de âncora, enquadramento responsivo e checkpoints de landing pages editoriais.
