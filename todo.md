@@ -92,3 +92,9 @@ A versão recuperada corresponde ao commit `1e528ce` do repositório original. A
 - [x] Inserir uma seção de biografia profissional da Fran na landing.
 - [x] Criar uma página de agradecimento com a assinatura visual aprovada.
 - [x] Validar as novas experiências em desktop e mobile; o checkpoint será salvo a seguir.
+
+## Ampliação — compartilhamento social
+
+- [x] Criar e publicar imagem de compartilhamento coerente com a identidade da Fran.
+- [x] Configurar Open Graph, Twitter Cards e descrições específicas para cada página.
+- [x] Validar a presença das tags e a renderização da landing e da página de agradecimento.

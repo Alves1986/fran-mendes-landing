@@ -4,12 +4,19 @@
  */
 import { ArrowLeft, ArrowUpRight } from "lucide-react";
 import { BrandLockup } from "@/components/BrandLockup";
+import { SocialMeta } from "@/components/SocialMeta";
 
 const AGENCY_URL = "https://wa.link/f8gtsj";
 
 export default function ThankYou() {
   return (
     <div className="thanks-page">
+      <SocialMeta
+        title="Obrigada pela mensagem | Fran Mendes Geffer"
+        description="Sua ideia chegou por aqui. A assessoria da Fran Mendes Geffer vai olhar cada detalhe com cuidado."
+        image="/manus-storage/fran-social-share-thanks_3b5645c2.jpg"
+        imageAlt="Fran Mendes Geffer em composição editorial de agradecimento"
+      />
       <header className="thanks-header">
         <a className="wordmark" href="/" aria-label="Fran Mendes Geffer, início">
           <BrandLockup />
